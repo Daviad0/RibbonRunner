@@ -30,6 +30,8 @@ We do want potential experimenters to look out for a couple things though that w
 - Any and all users may be able to access some or all user data stored. We have a couple of precautions (server side handling, secure REPL.IT database) to stop any data breaches, but we cannot guarantee that any data is safe
 - This was made by a couple of kids (and a couple of new adults); We may not be the best, but we are certainly trying
 
+**These could be examples of what we could improve in the future**
+
 ## Credits
 
 Since this was a part of a hackathon, many resources were used that we did not have the explicit written permission to use, however under the laws of Fair Use, we believe that we are legally entitled to utilize logos and resources as long as it fits under an "educational" scope!
