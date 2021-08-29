@@ -34,6 +34,17 @@ namespace KH21SE
             currentRace = await s.GetRace();
             TimeSpan time = TimeSpan.FromMilliseconds(currentRace.date);
             DateTime startdate = new DateTime(1970, 1, 1) + time;
+
+            if (ServerCommunication.MyUserInstance.logs != null)
+            {
+                var total = 0;
+                foreach(int m in ServerCommunication.MyUserInstance.logs)
+                {
+                    total += m;
+                }
+                totalRun.Text = "You have ran a total of " + (Math.Round((double)total / 1000, 1)).ToString() + "km! Great job and keep it up with a bit of practice completing a 5k (tip: you can go with your team members as well!)";
+            }
+
             if (ServerCommunication.CachedRaces != null && ServerCommunication.CachedRaces.Find(el => el._raceId == currentRace._id) != null)
             {
                 var userRaceToRef = ServerCommunication.CachedRaces.Find(el => el._raceId == currentRace._id);
@@ -41,6 +52,10 @@ namespace KH21SE
                 card_inevent.IsVisible = true;
                 card_ineventDate.Text = startdate.ToString("dd MMM yyyy hh:mm:ss");
                 card_ineventTicketType.Text = userRaceToRef.inperson ? "In Person" : "Online";
+                if(startdate < DateTime.Now)
+                {
+                    joinRace.IsVisible = true;
+                }
             }
             else
             {
@@ -59,6 +74,10 @@ namespace KH21SE
                     card_inevent.IsVisible = true;
                     card_ineventDate.Text = startdate.ToString("dd MMM yyyy hh:mm:ss");
                     card_ineventTicketType.Text = userRaceToRef.inperson ? "In Person" : "Online";
+                    if (startdate < DateTime.Now)
+                    {
+                        joinRace.IsVisible = true;
+                    }
                 }
                 else
                 {
@@ -183,6 +202,23 @@ namespace KH21SE
                     await DisplayAlert("Uh oh", "Failed to create your team!", "Ok");
                 }
             }
+        }
+        private async void SeeMyTeam(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MyTeam());
+        }
+        private async void SignOut(object sender, EventArgs e)
+        {
+            ServerCommunication.MyTeam = null;
+            ServerCommunication.CachedRace = null;
+            ServerCommunication.CachedRaces = null;
+            ServerCommunication.MyUserInstance = null;
+            Navigation.PushAsync(new Login());
+        }
+
+        private void joinRace_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new VirtualMap(currentRace));
         }
     }
 }

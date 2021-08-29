@@ -10,7 +10,7 @@ namespace KH21SE
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MyTeam());
+            MainPage = new NavigationPage(new Login());
         }
 
         protected override void OnStart()

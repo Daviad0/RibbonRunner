@@ -5,42 +5,84 @@
              BackgroundColor="#AB105F"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0">
-                <Label Text="Your Team" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="30" FontAttributes="Bold" Grid.Column="1" Margin="30,20,30,10"/>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <ScrollView Grid.Row="0">
+                    <StackLayout>
+                        <Label Text="Your Team" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="30" FontAttributes="Bold" Grid.Column="1" Margin="30,20,30,10" x:Name="teamName"/>
 
-                <Frame BackgroundColor="White" Margin="60,0" CornerRadius="16">
-                    <Label Text="12345678" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="30" FontAttributes="Bold" Margin="30,0"/>
-                </Frame>
-                <Label Text="Leaderboard" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="24" FontAttributes="Bold" Grid.Column="1" Margin="30,20,30,0"/>
-                <Frame BackgroundColor="#FAB9C7" Margin="40,20" CornerRadius="16" Padding="20,10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Frame BackgroundColor="#160F29" Padding="5,0" WidthRequest="20" HeightRequest="20" HorizontalOptions="Start" CornerRadius="4">
-                            <Label Text="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="20" FontAttributes="Bold"/>
+                        <Frame BackgroundColor="White" Margin="60,0" CornerRadius="16">
+                            <Label Text="12345678" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="30" FontAttributes="Bold" Margin="30,0" x:Name="teamCode"/>
                         </Frame>
-                        
-                        <Label Text="12345678" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="20" FontAttributes="Bold"/>
-                        <Label Text="2.1k" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" TextColor="#160F29" FontSize="20"/>
-                        <Frame Grid.Row="1" BackgroundColor="#160F29" Padding="5,0" WidthRequest="20" HeightRequest="20" HorizontalOptions="Start" CornerRadius="4">
-                            <Label Text="2" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="20" FontAttributes="Bold"/>
+                        <Frame BackgroundColor="White" Margin="20,0" CornerRadius="16" x:Name="trophyCase" IsVisible="False" Padding="5,5,20,5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Badge_1.png" Grid.Column="0" WidthRequest="120" x:Name="awardImage">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ExpandBigImage"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Grid.Column="1" Text="The super speedy award is earned by getting 4 members to get a 5k! Wow, much fast!" VerticalOptions="Center" TextColor="#160F29" FontSize="14" x:Name="awardDesc"/>
+                            </Grid>
+
                         </Frame>
+                        <Label Text="Leaderboard" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="24" FontAttributes="Bold" Grid.Column="1" Margin="30,20,30,0"/>
+                        <Frame BackgroundColor="#FAB9C7" Margin="40,20" CornerRadius="16" Padding="20,10">
+                            <Grid x:Name="leaderboard">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame BackgroundColor="#160F29" Padding="5,0" WidthRequest="20" HeightRequest="20" HorizontalOptions="Start" CornerRadius="4">
+                                    <Label Text="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="20" FontAttributes="Bold"/>
+                                </Frame>
 
-                        <Label Grid.Row="1" Text="12345678" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="20" FontAttributes="Bold"/>
-                        <Label Grid.Row="1" Text="2.1k" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" TextColor="#160F29" FontSize="20"/>
-                    </Grid>
+                                <Label Text="12345678" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="20" FontAttributes="Bold"/>
+                                <Label Text="2.1k" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" TextColor="#160F29" FontSize="20"/>
+                                <Frame Grid.Row="1" BackgroundColor="#160F29" Padding="5,0" WidthRequest="20" HeightRequest="20" HorizontalOptions="Start" CornerRadius="4">
+                                    <Label Text="2" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="20" FontAttributes="Bold"/>
+                                </Frame>
 
-                </Frame>
-            </StackLayout>
-        </Grid>
+                                <Label Grid.Row="1" Text="12345678" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="20" FontAttributes="Bold"/>
+                                <Label Grid.Row="1" Text="2.1k" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" TextColor="#160F29" FontSize="20"/>
+                            </Grid>
+
+                        </Frame>
+                        <Button Text="Join A Different Team" CornerRadius="16" Padding="20,10" Margin="20,10,20,5" BackgroundColor="White" TextColor="#160F29" Clicked="JoinTeam"/>
+                        <Button Text="Create Team" CornerRadius="16" Padding="20,10" Margin="20,0,20,5" BackgroundColor="White" TextColor="#160F29" Clicked="CreateTeam"/>
+                    </StackLayout>
+                </ScrollView>
+                
+                <Label Text="&lt; Go Back Home" TextColor="White" FontSize="16" Grid.Row="1" HorizontalOptions="Center" x:Name="backbutton_text">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GoToHome"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+            <Grid x:Name="loading" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Black" Opacity=".5" IsVisible="False">
+                <ActivityIndicator Color="White" IsRunning="True" Margin="80,0"/>
+            </Grid>
+            <Grid x:Name="bigAwardC" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" IsVisible="False">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ContractBigImage"/>
+                </Grid.GestureRecognizers>
+                <BoxView BackgroundColor="Black" Opacity=".7"/>
+                <Image Source="Badge_1.png" Margin="40,0" x:Name="bigAward">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ContractBigImage"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </AbsoluteLayout>
+        
         
     </ContentPage.Content>
 </ContentPage>

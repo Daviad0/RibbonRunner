@@ -31,6 +31,9 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
+            <Grid x:Name="loading" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Black" Opacity=".5" IsVisible="False">
+                <ActivityIndicator Color="White" IsRunning="True" Margin="80,0"/>
+            </Grid>
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

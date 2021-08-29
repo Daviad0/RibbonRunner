@@ -25,8 +25,8 @@
                         <Label x:Name="card_greetingMainGreeting" Text="Good afternoon, David" HorizontalTextAlignment="Center" TextColor="#E6E5E4" FontSize="30" FontAttributes="Bold"/>
                             <StackLayout x:Name="card_greetingExpandedContent" Opacity="0">
                             <Label x:Name="card_greetingWalks" Text="3 Walks!" HorizontalTextAlignment="Center" TextColor="#E6E5E4" FontSize="20"/>
-                            <Button Text="My Account" CornerRadius="16" Padding="20,10" Margin="20,10,20,5" BackgroundColor="#E6E5E4" TextColor="#160F29"/>
-                            <Button Text="My Previous Walks" CornerRadius="16" Padding="20,10" Margin="20,0,20,10" BackgroundColor="#E6E5E4" TextColor="#160F29"/>
+                            <!--<Button Text="My Account" CornerRadius="16" Padding="20,10" Margin="20,10,20,5" BackgroundColor="#E6E5E4" TextColor="#160F29"/>-->
+                            <Button Text="Sign Out" CornerRadius="16" Padding="20,10" Margin="20,0,20,10" BackgroundColor="#E6E5E4" TextColor="#160F29" Clicked="SignOut"/>
                             </StackLayout>
                         </StackLayout>
 
@@ -46,10 +46,10 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Text="Your Badges" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="24" FontAttributes="Bold" Grid.Column="0" Margin="0,0,10,0"/>
+                                <Label Text="Your Progress" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="24" FontAttributes="Bold" Grid.Column="0" Margin="0,0,10,0"/>
                             </Grid>
 
-                            <Label Text="You don't have any badges right now... Why don't you start a practice session to earn one!" HorizontalOptions="Center" VerticalOptions="Center" Margin="15,10,15,0" TextColor="#160F29" FontSize="16" HorizontalTextAlignment="Center"/>
+                            <Label x:Name="totalRun" Text="You have ran a total of 0km! Great job and keep it up with a bit of practice completing a 5k (tip: you can go with your team members as well!)" HorizontalOptions="Center" VerticalOptions="Center" Margin="15,10,15,0" TextColor="#160F29" FontSize="16" HorizontalTextAlignment="Center"/>
                             <Button Text="Practice" CornerRadius="16" Padding="20,10" Margin="20,10,20,5" BackgroundColor="White" TextColor="#160F29" Clicked="Practice"/>
                         </StackLayout>
 
@@ -89,10 +89,11 @@
                             <Label x:Name="card_ineventDate" Text="August 24th" HorizontalOptions="Center" VerticalOptions="Center" Margin="15,10,15,0" TextColor="#160F29" FontSize="20" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
                             <Label x:Name="card_ineventTicketType" Text="Online" HorizontalOptions="Center" VerticalOptions="Center" Margin="15,10,15,0" TextColor="#160F29" FontSize="20" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
                             <Button Text="My Ticket" CornerRadius="16" Padding="20,10" Margin="20,10,20,5" BackgroundColor="White" TextColor="#160F29" Clicked="Register"/>
+                            <Button Text="Start Race" IsVisible="False" x:Name="joinRace" CornerRadius="16" Padding="20,10" Margin="20,0,20,5" BackgroundColor="White" TextColor="#160F29" Clicked="joinRace_Clicked"/>
                         </StackLayout>
 
                     </Frame>
-                    <Frame BackgroundColor="#FAB9C7" Padding="10,20" CornerRadius="16" Margin="10,5" x:Name="card_team">
+                    <Frame BackgroundColor="#FAB9C7" Padding="10,20" CornerRadius="16" Margin="10,5,10,20" x:Name="card_team">
                         <StackLayout>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -115,7 +116,8 @@
                                 <Label Text="Code: 12345678" HorizontalOptions="Center" VerticalOptions="Center" Margin="15,10,15,0" TextColor="#160F29" FontSize="20" HorizontalTextAlignment="Center" x:Name="card_teamTeamId"/>
                                 <Label Text="0 Members" HorizontalOptions="Center" VerticalOptions="Center" Margin="15,10,15,0" TextColor="#160F29" FontSize="20" HorizontalTextAlignment="Center" x:Name="card_teamMembers"/>
 
-                                <Button Text="Join A Different Team" CornerRadius="16" Padding="20,10" Margin="20,10,20,5" BackgroundColor="White" TextColor="#160F29" Clicked="JoinTeam"/>
+                                <Button Text="My Team Page" CornerRadius="16" Padding="20,10" Margin="20,15,20,5" BackgroundColor="White" TextColor="#160F29" Clicked="SeeMyTeam"/>
+                                <Button Text="Join A Different Team" CornerRadius="16" Padding="20,10" Margin="20,0,20,5" BackgroundColor="White" TextColor="#160F29" Clicked="JoinTeam"/>
                                 <Button Text="Create Team" CornerRadius="16" Padding="20,10" Margin="20,0,20,5" BackgroundColor="White" TextColor="#160F29" Clicked="CreateTeam"/>
                             </StackLayout>
                             

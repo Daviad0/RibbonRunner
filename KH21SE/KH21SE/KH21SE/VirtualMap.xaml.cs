@@ -66,16 +66,20 @@ namespace KH21SE
                                     {
                                         dorasMap.MapElements.Remove(dorasMap.MapElements.ToList().Find(el => el.ClassId == member));
                                     }
-                                    Circle circle = new Circle
+                                    if(location != null)
                                     {
-                                        Center = new Position(location.Latitude, location.Longitude),
-                                        Radius = new Distance(5),
-                                        StrokeColor = Xamarin.Forms.Color.FromRgba(66, 182, 245, 255),
-                                        StrokeWidth = 8,
-                                        FillColor = Xamarin.Forms.Color.FromRgba(66, 182, 245, 50),
-                                        ClassId = member
-                                    };
-                                    dorasMap.MapElements.Add(circle);
+                                        Circle circle = new Circle
+                                        {
+                                            Center = new Position(location.Latitude, location.Longitude),
+                                            Radius = new Distance(5),
+                                            StrokeColor = Xamarin.Forms.Color.FromRgba(66, 182, 245, 255),
+                                            StrokeWidth = 8,
+                                            FillColor = Xamarin.Forms.Color.FromRgba(66, 182, 245, 50),
+                                            ClassId = member
+                                        };
+                                        dorasMap.MapElements.Add(circle);
+                                    }
+                                    
                                 });
                             }
                         });
@@ -173,6 +177,16 @@ namespace KH21SE
                 if(TotalDistance >= selectedRace.meters)
                 {
                     // was able to successfully complete a 5k
+                    var response = await s.AddCompletedRace(ServerCommunication.MyUserInstance, selectedRace);
+                    if (!response.StartsWith("Failed"))
+                    {
+                        var userToUpdate = JsonConvert.DeserializeObject<User>(response);
+                        ServerCommunication.MyUserInstance = userToUpdate;
+                    }
+                    else
+                    {
+                        await DisplayAlert("Uh oh", "For some reason, we failed to log that you completed this event!", "Ok");
+                    }
                 }
             }
             

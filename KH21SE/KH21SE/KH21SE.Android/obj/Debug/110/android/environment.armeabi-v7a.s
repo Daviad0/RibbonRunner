@@ -23,8 +23,8 @@
 	.section	.rodata.env.str.1,"aMS",%progbits,1
 	.type	.L.env.str.1, %object
 .L.env.str.1:
-	.asciz	"com.companyname.kh21se"
-	.size	.L.env.str.1, 23
+	.asciz	"chaos.gamersquad.kh21se"
+	.size	.L.env.str.1, 24
 	.section	.data.application_config,"aw",%progbits
 	.type	application_config, %object
 	.p2align	2
@@ -92,7 +92,7 @@ mono_aot_mode_name:
 	.section	.rodata.env.str.8,"aMS",%progbits,1
 	.type	.L.env.str.8, %object
 .L.env.str.8:
-	.asciz	"5e7bc48c-66f3-409b-8600-1ea553ee1038"
+	.asciz	"3ef38ea5-3c4f-461a-b22e-16e1bda35e5c"
 	.size	.L.env.str.8, 37
 	.section	.rodata.env.str.9,"aMS",%progbits,1
 	.type	.L.env.str.9, %object

@@ -22,9 +22,32 @@ namespace KH21SE
             loginCardAnimationIn = new Animation(v => loginCard.HeightRequest = v, 100, 50, Easing.CubicInOut);
             submitAnimationOut = new Animation(v => submitContainer.HeightRequest = v, 0, 50, Easing.CubicInOut);
             submitAnimationIn = new Animation(v => submitContainer.HeightRequest = v, 50, 0, Easing.CubicInOut);
-            s.Initialize();
+            
         }
-
+        protected async override void OnAppearing()
+        {
+            if (!ServerCommunication.IsInitialized)
+            {
+                await s.Initialize();
+                await s.LoadEverything();
+            }
+            if(ServerCommunication.MyUserInstance != null)
+            {
+                loading.IsVisible = true;
+                var response = await s.CheckIfAccount(new LoginAttempt() { name = ServerCommunication.MyUserInstance.name, password = ServerCommunication.MyUserInstance.password });
+                if (!response.StartsWith("Failed"))
+                {
+                    var userToHandle = JsonConvert.DeserializeObject<User>(response);
+                    Navigation.PushAsync(new MainPage());
+                    ServerCommunication.MyUserInstance = userToHandle;
+                }
+                else
+                {
+                    loading.IsVisible = false;
+                }
+            }
+            base.OnAppearing();
+        }
         private Animation loginCardAnimationOut;
         private Animation loginCardAnimationOut2;
         private Animation loginCardAnimationInS1;
@@ -169,8 +192,10 @@ namespace KH21SE
                 if (!response.StartsWith("Failed"))
                 {
                     var userToHandle = JsonConvert.DeserializeObject<User>(response);
+                    
                     Navigation.PushAsync(new MainPage());
                     ServerCommunication.MyUserInstance = userToHandle;
+                    await s.SaveEverything();
                 }
                 else
                 {
@@ -183,8 +208,10 @@ namespace KH21SE
                 if (!response.StartsWith("Failed"))
                 {
                     var userToUse = JsonConvert.DeserializeObject<User>(response);
+                    
                     Navigation.PushAsync(new MainPage());
                     ServerCommunication.MyUserInstance = new User() { _id = userToUse._id, email = email.Text, lastlogin = DateTime.Now, name = username.Text, phone = ";)", password = password.Text, logs = new int[] { }, racesCompleted = new string[] { } };
+                    await s.SaveEverything();
                 }
                 else
                 {

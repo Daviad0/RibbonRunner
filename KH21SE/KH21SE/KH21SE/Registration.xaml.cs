@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,15 +21,29 @@ namespace KH21SE
         }
         public Race currentRace;
         private DateTime launchTime;
+        private UserRace ur;
         private async void StartUpdateTimer()
         {
             Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
             {
-                var timeSpan = launchTime-DateTime.Now;
-                time_d.Text = timeSpan.Days.ToString("00") + " D";
-                time_h.Text = timeSpan.Hours.ToString("00") + " H";
-                time_m.Text = timeSpan.Minutes.ToString("00") + " M";
-                time_s.Text = timeSpan.Seconds.ToString("00") + " S";
+                if(launchTime < DateTime.Now)
+                {
+                    joinRace.IsVisible = true;
+                    time_d.Text = "00 D";
+                    time_h.Text = "00 H";
+                    time_m.Text = "00 M";
+                    time_s.Text = "00 S";
+                }
+                else
+                {
+                    joinRace.IsVisible = false;
+                    var timeSpan = launchTime - DateTime.Now;
+                    time_d.Text = timeSpan.Days.ToString("00") + " D";
+                    time_h.Text = timeSpan.Hours.ToString("00") + " H";
+                    time_m.Text = timeSpan.Minutes.ToString("00") + " M";
+                    time_s.Text = timeSpan.Seconds.ToString("00") + " S";
+                }
+                
                 return true;
             });
         }
@@ -41,6 +56,7 @@ namespace KH21SE
             if (ServerCommunication.CachedRaces != null && ServerCommunication.CachedRaces.Find(el => el._raceId == currentRace._id) != null)
             {
                 var userRaceToRef = ServerCommunication.CachedRaces.Find(el => el._raceId == currentRace._id);
+                ur = userRaceToRef;
                 ticketNumber.Text = (userRaceToRef.inperson ? "I" : "O") + "-" + userRaceToRef._id.ToString().PadLeft(5, '0');
                 backbutton_text.Text = "< Go Back Home!";
                 pagesubtitle.Text = "You already registered!";
@@ -58,6 +74,7 @@ namespace KH21SE
                     var userRaceToRef = JsonConvert.DeserializeObject<UserRace>(response);
                     // response is yes
                     // this is different
+                    ur = userRaceToRef;
                     if (ServerCommunication.CachedRaces == null)
                     {
                         ServerCommunication.CachedRaces = new List<UserRace>();
@@ -120,6 +137,7 @@ namespace KH21SE
                     ServerCommunication.CachedRaces = new List<UserRace>();
                 }
                 ServerCommunication.CachedRaces.Add(userRaceToRef);
+                ur = userRaceToRef;
                 ticketNumber.Text = (userRaceToRef.inperson ? "I" : "O") + "-" + userRaceToRef._id.ToString().PadLeft(5, '0');
                 await needticket_container.FadeTo(0, 250);
                 await pagesubtitle.FadeTo(0, 100);
@@ -144,6 +162,20 @@ namespace KH21SE
 
 
 
+        }
+
+        private void joinRace_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new VirtualMap(currentRace));
+        }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Title = "Spread the News",
+                Text = "Hey there, I just signed up to race " + (ur.inperson ? "in person " : "virtually ") + "for the Breast Cancer Society of Canada's 5k that they are hosting. It's called the "  + currentRace.name + " and it's going to be super fun. My ticket number is " + ur._id.PadLeft(5, '0') + "! Find out more at " + "https://KH21SEWeb.daveeddigs.repl.co"
+            });
         }
     }
 }

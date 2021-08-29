@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace KH21SE
 {
@@ -276,11 +277,56 @@ namespace KH21SE
             }
 
         }
+        public async Task<string> AddCompletedRace(User user, Race race)
+        {
+            try
+            {
+                object[] messageContents = { user, race };
+                var stringContent = new StringContent(JsonConvert.SerializeObject(messageContents), Encoding.UTF8, "application/json");
+                HttpResponseMessage res = await client.PostAsync("addcompletedrace", stringContent);
+                res.EnsureSuccessStatusCode();
+                return await res.Content.ReadAsStringAsync();
+            }
+            catch (Exception e)
+            {
+                return "Failed";
+            }
+
+        }
+        public async Task<string> GetLeaderboardUser(User user)
+        {
+            try
+            {
+                var stringContent = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+                HttpResponseMessage res = await client.PostAsync("leaderboard/getuser", stringContent);
+                res.EnsureSuccessStatusCode();
+                return await res.Content.ReadAsStringAsync();
+            }
+            catch (Exception e)
+            {
+                return "Failed";
+            }
+
+        }
         public async Task<bool> Initialize()
         {
             IsInitialized = true;
             client.Timeout = TimeSpan.FromSeconds(3);
             client.BaseAddress = new Uri("https://KH21SEServer.daveeddigs.repl.co/");
+            return true;
+        }
+        public async Task<bool> SaveEverything()
+        {
+            Application.Current.Properties["user"] = ServerCommunication.MyUserInstance;
+            Application.Current.SavePropertiesAsync();
+            return true;
+        }
+        public async Task<bool> LoadEverything()
+        {
+            if (Application.Current.Properties.ContainsKey("user"))
+            {
+                ServerCommunication.MyUserInstance = (User)Application.Current.Properties["user"];
+            }
             return true;
         }
     }
