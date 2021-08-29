@@ -16,6 +16,7 @@ physically close enough to join. We will still include some form of
 digital/online experience for 2022. Additionally, we are looking at the
 ‘event’ being rom May 1 – 8th (Mother’s Day)
 ```
+All of our writing / video submissions are included on DevPost, **so if you are a judge, that will have better information than this README will** :>
 
 ## Testing It Out
 
