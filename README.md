@@ -41,6 +41,6 @@ This project was made by students from the United States that are currently in H
 - **Natalie K.**
 - **David R.**
 
-## Thanks \(^v^)
+## Thanks \\(^v^)
 
 We hope you enjoy the experience that we pulled together as a team in the last 48 hours! If you have any feedback, please leave us a comment on DevPost. We are always looking to improve our coding skills!
