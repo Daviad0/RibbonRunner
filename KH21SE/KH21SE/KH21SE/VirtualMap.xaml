@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KH21SE.VirtualMap"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <maps:Map x:Name="dorasMap" IsShowingUser="True" Visual="Material" MapType="Street" MapClicked="OnMapClicked" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,.9" HasZoomEnabled="False" />
+            <Frame AbsoluteLayout.LayoutBounds="0,0,.2,.1" AbsoluteLayout.LayoutFlags="All"  Padding="10,14" BackgroundColor="#AB105F" CornerRadius="16" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,10,0,0">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Frame.GestureRecognizers>
+                <Image HorizontalOptions="Center" VerticalOptions="Center" x:Name="back" Source="KH21_D" WidthRequest="14" Rotation="-90">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+            <Frame AbsoluteLayout.LayoutBounds="1,0,.6,.1" AbsoluteLayout.LayoutFlags="All" Padding="10,5" BackgroundColor="#AB105F" CornerRadius="16" HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,10,0">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Practice" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center" x:Name="mode_label">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Frame>
+            <Grid AbsoluteLayout.LayoutBounds="1,.66,.12,.1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" Padding="10,5" BackgroundColor="#AB105F" CornerRadius="16" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,10,0" WidthRequest="50" HeightRequest="50">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ZoomIn"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="+" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ZoomIn"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame Grid.Row="1" Padding="10,5" BackgroundColor="#AB105F" CornerRadius="16" HorizontalOptions="End" VerticalOptions="Start" Margin="0,0,10,0" WidthRequest="50" HeightRequest="50">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ZoomOut"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="-" TextColor="White" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ZoomOut"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+            </Grid>
+
+            <Frame AbsoluteLayout.LayoutBounds="0,1.05,1,.3" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#AB105F" CornerRadius="16" Padding="10">
+                <Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Margin="0,20,0,0">
+                            <Frame BackgroundColor="White" WidthRequest="80" HeightRequest="80" Padding="5" CornerRadius="60" HorizontalOptions="Center" VerticalOptions="Start">
+                                <Label x:Name="distanceWidget" Text="0km" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#C60047" FontSize="20" FontAttributes="Bold"/>
+                            </Frame>
+                            <Label Text="You" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="1" VerticalOptions="Start" Margin="0,20,0,0">
+                            <ProgressBar x:Name="progressDistance" ProgressColor="White" Progress="0" Margin="10,10,10,0"/>
+                            
+                            <Label Text="00:00:00" TextColor="White" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" x:Name="timer"/>
+                            <Label Text="0 Members Online" TextColor="White" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" x:Name="team"/>
+                        </StackLayout>
+                    </Grid>
+                    
+                </Grid>
+                
+                
+            </Frame>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

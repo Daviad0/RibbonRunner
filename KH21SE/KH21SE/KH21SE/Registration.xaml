@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KH21SE.Registration"
+             BackgroundColor="#AB105F"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <StackLayout>
+                <Label Text="Horray, Horray!" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="24" FontAttributes="Bold" Grid.Column="1" Margin="30,20,30,0"/>
+                <Label x:Name="pagesubtitle" Text="Another Race is Available!" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="16" Grid.Column="1" Margin="30,0,30,20"/>
+                <StackLayout x:Name="needticket_container" HeightRequest="600">
+                    <Frame BackgroundColor="White" Margin="40,0,40,20" CornerRadius="16" Padding="10,20">
+                        <StackLayout>
+                            <Label x:Name="needticket_name" Text="Mother's Day" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="24" FontAttributes="Bold" Grid.Column="1" Margin="30,0"/>
+                            <Label x:Name="needticket_date" Text="August 30th, 2021" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="16" FontAttributes="Bold" Grid.Column="1" Margin="30,10,30,0"/>
+
+                            <Label x:Name="needticket_participants" Text="300,000+" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="16" FontAttributes="Bold" Grid.Column="1" Margin="30,0,30,0"/>
+                        </StackLayout>
+
+                    </Frame>
+
+
+                    <Grid x:Name="e1_final" Margin="40,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Ticket Type" TextColor="White" FontSize="24"/>
+                        <Picker Grid.Column="1" FontAttributes="Bold" HorizontalOptions="End" WidthRequest="150" TextColor="White" HorizontalTextAlignment="End" x:Name="e1_picker" SelectedIndexChanged="ChangeRegistrationDetail">
+                            <Picker.Items>
+                                <x:String>Virtual</x:String>
+                                <x:String>In Person</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+                    <Grid x:Name="e2_final" Margin="40,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="T-Shirt" TextColor="White" FontSize="24"/>
+                        <Picker Grid.Column="1" FontAttributes="Bold" HorizontalOptions="End" WidthRequest="150" TextColor="White" HorizontalTextAlignment="End" x:Name="e2_picker" SelectedIndexChanged="ChangeRegistrationDetail">
+                            <Picker.Items>
+                                <x:String>Small</x:String>
+                                <x:String>Medium</x:String>
+                                <x:String>Large</x:String>
+                                <x:String>Extra Large</x:String>
+                                <x:String>Extra Extra Large</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+                    <Grid x:Name="e3_final" Margin="40,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Exercise" TextColor="White" FontSize="24"/>
+                        <Picker Grid.Column="1" FontAttributes="Bold" HorizontalOptions="End" WidthRequest="150" TextColor="White" HorizontalTextAlignment="End" x:Name="e3_picker" SelectedIndexChanged="ChangeRegistrationDetail">
+                            <Picker.Items>
+                                <x:String>Walk</x:String>
+                                <x:String>Run</x:String>
+                                <x:String>Bike</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+                    <Grid x:Name="e4_final" Margin="40,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Ready to Roll" TextColor="White" FontSize="24"/>
+                        <Picker Grid.Column="1" FontAttributes="Bold" HorizontalOptions="End" WidthRequest="150" TextColor="White" HorizontalTextAlignment="End" x:Name="e4_picker" SelectedIndexChanged="ChangeRegistrationDetail">
+                            <Picker.Items>
+                                <x:String>YES!</x:String>
+                                <x:String>Definately!</x:String>
+                                <x:String>Of Course!</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+                    <Button x:Name="submitTicket" IsEnabled="False" Text="Fill Out All The Fields" CornerRadius="16" Padding="20,10" Margin="60,10,60,0" BackgroundColor="White" TextColor="#C60047" Clicked="GetTicket"/>
+                </StackLayout>
+                <StackLayout x:Name="hasticket_container" IsVisible="False">
+                    <Frame BackgroundColor="White" Margin="80,0,80,20" CornerRadius="16" Padding="10,20">
+                        <StackLayout>
+                            <Label Text="O-12345" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#160F29" FontSize="40" FontAttributes="Bold" Grid.Column="1" x:Name="ticketNumber"/>
+                            <Grid Margin="10,0">
+                                <Frame Padding="10,5" BackgroundColor="#AB105F" CornerRadius="16" Margin="0,5,0,0" Grid.Column="0">
+                                    <Label Text="Scan" FontSize="14" HorizontalOptions="Center" TextColor="White"/>
+                                </Frame>
+                                <Frame Padding="10,5" BackgroundColor="#AB105F" CornerRadius="16" Margin="0,5,0,0" Grid.Column="1">
+                                    <Label Text="Share" FontSize="14" HorizontalOptions="Center" TextColor="White"/>
+                                </Frame>
+                            </Grid>
+                            
+                            
+                        </StackLayout>
+                        
+                    </Frame>
+                    <Label Text="00 D" x:Name="time_d" FontFamily="Mono" FontSize="60" HorizontalOptions="Center" TextColor="White"/>
+                    <Label Text="00 H" x:Name="time_h" FontFamily="Mono" FontSize="60" HorizontalOptions="Center" TextColor="White"/>
+                    <Label Text="00 M" x:Name="time_m" FontFamily="Mono" FontSize="60" HorizontalOptions="Center" TextColor="White"/>
+                    <Label Text="00 S" x:Name="time_s" FontFamily="Mono" FontSize="60" HorizontalOptions="Center" TextColor="White"/>
+                </StackLayout>
+            </StackLayout>
+            <Label Text="&lt; Not Right Now..." TextColor="White" FontSize="16" Grid.Row="1" HorizontalOptions="Center" x:Name="backbutton_text">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="GoToHome"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

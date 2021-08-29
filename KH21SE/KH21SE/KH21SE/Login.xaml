@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KH21SE.Login"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#007E82">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="Center">
+                    <Image Source="KH21_Logo.png" WidthRequest="150" Margin="0,0,0,20" x:Name="logo">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="Welcome" TextColor="White" FontSize="30" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Ready to Change the World?" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+                    <!--HAVE ANIMAITON-->
+                    <Frame BackgroundColor="White" Padding="20" CornerRadius="16" Margin="0,20,0,0" HorizontalOptions="Center" HeightRequest="50" x:Name="loginCard">
+                        <StackLayout>
+                            <Entry Placeholder="Username" TextColor="#160F29" BackgroundColor="White" WidthRequest="300" HorizontalOptions="Center" x:Name="username" Completed="username_Completed" Unfocused="username_Unfocused"/>
+                            <Entry Placeholder="Password" TextColor="#160F29" BackgroundColor="White" WidthRequest="300" HorizontalOptions="Center" IsPassword="True" Opacity="0" x:Name="password" Completed="password_Completed" IsEnabled="False" Unfocused="password_Unfocused"/>
+                            <StackLayout x:Name="registrationInformation" Opacity="0">
+                                <Entry Placeholder="Email" TextColor="#160F29" BackgroundColor="White" WidthRequest="300" HorizontalOptions="Center" x:Name="email" IsEnabled="False" Completed="password_Completed" Unfocused="password_Unfocused"/>
+                                <Entry Placeholder="Age" TextColor="#160F29" BackgroundColor="White" WidthRequest="300" HorizontalOptions="Center" Keyboard="Numeric" x:Name="age" IsEnabled="False" Completed="password_Completed" Unfocused="password_Unfocused"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout x:Name="submitContainer" Opacity="0">
+                        <Button Text="Login/Register" CornerRadius="16" Padding="20,10" Margin="50,10,50,5" BackgroundColor="White" TextColor="#160F29" x:Name="register" IsEnabled="True" Clicked="register_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
