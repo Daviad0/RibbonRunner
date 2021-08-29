@@ -17,8 +17,10 @@ namespace KH21SE
     public partial class VirtualMap : ContentPage
     {
         private static ServerCommunication s = ServerCommunication.Instance;
-        public VirtualMap()
+        private Race selectedRace;
+        public VirtualMap(Race race)
         {
+            selectedRace = race;
             InitializeComponent();
         }
         private LatLng lastCoordinates;
@@ -29,6 +31,12 @@ namespace KH21SE
         private List<string> teamIdsHere = new List<string>();
         protected override void OnAppearing()
         {
+
+            if(selectedRace != null)
+            {
+                mode_label.Text = "Race";
+            }
+
             shouldBeChecking = true;
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
@@ -105,7 +113,7 @@ namespace KH21SE
                         }
                         lastCoordinates = new LatLng() { Latitude = location.Latitude, Longitude = location.Longitude };
                         distanceWidget.Text = Math.Round(TotalDistance/1000, 1).ToString() + "km";
-                        progressDistance.ProgressTo((TotalDistance) / 5000, 1000, Easing.CubicInOut);
+                        progressDistance.ProgressTo((TotalDistance) / (selectedRace == null ? 5000 : selectedRace.meters), 1000, Easing.CubicInOut);
                         if(snapTo)
                             dorasMap.MoveToRegion(new MapSpan(new Position(location.Latitude, location.Longitude), zoom, zoom));
                     }
@@ -146,16 +154,28 @@ namespace KH21SE
         {
             shouldBeChecking = false;
 
-            var response = await s.AddPracticeMeters(ServerCommunication.MyUserInstance, (int)Math.Round(TotalDistance));
-            if (!response.StartsWith("Failed"))
+            if(selectedRace == null)
             {
-                var userToUpdate = JsonConvert.DeserializeObject<User>(response);
-                ServerCommunication.MyUserInstance = userToUpdate;
+                var response = await s.AddPracticeMeters(ServerCommunication.MyUserInstance, (int)Math.Round(TotalDistance));
+                if (!response.StartsWith("Failed"))
+                {
+                    var userToUpdate = JsonConvert.DeserializeObject<User>(response);
+                    ServerCommunication.MyUserInstance = userToUpdate;
+                }
+                else
+                {
+                    await DisplayAlert("Uh oh", "For some reason, we failed to save your practice meters on your account! We apologize for the inconvinence", "Ok");
+                }
             }
             else
             {
-                await DisplayAlert("Uh oh", "For some reason, we failed to save your practice meters on your account! We apologize for the inconvinence", "Ok");
+                // handle adding successful race here
+                if(TotalDistance >= selectedRace.meters)
+                {
+                    // was able to successfully complete a 5k
+                }
             }
+            
 
             Navigation.PopAsync();
         }

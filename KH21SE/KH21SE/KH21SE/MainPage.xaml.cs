@@ -130,7 +130,7 @@ namespace KH21SE
         }
         private async void Practice(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new VirtualMap());
+            Navigation.PushAsync(new VirtualMap(null));
         }
         private async void JoinTeam(object sender, EventArgs e)
         {

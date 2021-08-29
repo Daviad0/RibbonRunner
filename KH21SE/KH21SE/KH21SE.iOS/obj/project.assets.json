@@ -1498,11 +1498,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE.iOS\\KH21SE.iOS.csproj",
+      "projectUniqueName": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE.iOS\\KH21SE.iOS.csproj",
       "projectName": "KH21SE.iOS",
-      "projectPath": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE.iOS\\KH21SE.iOS.csproj",
+      "projectPath": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE.iOS\\KH21SE.iOS.csproj",
       "packagesPath": "C:\\Users\\djree\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE.iOS\\obj\\",
+      "outputPath": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1523,8 +1523,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj": {
-              "projectPath": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj"
+            "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj": {
+              "projectPath": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj"
             }
           }
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE.Android\\KH21SE.Android.csproj": {}
+    "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE.Android\\KH21SE.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE.Android\\KH21SE.Android.csproj": {
+    "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE.Android\\KH21SE.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE.Android\\KH21SE.Android.csproj",
+        "projectUniqueName": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE.Android\\KH21SE.Android.csproj",
         "projectName": "KH21SE.Android",
-        "projectPath": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE.Android\\KH21SE.Android.csproj",
+        "projectPath": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE.Android\\KH21SE.Android.csproj",
         "packagesPath": "C:\\Users\\djree\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE.Android\\obj\\",
+        "outputPath": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid11.0": {
             "projectReferences": {
-              "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj": {
-                "projectPath": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj"
+              "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj": {
+                "projectPath": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj"
               }
             }
           }
@@ -62,14 +62,14 @@
         }
       }
     },
-    "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj": {
+    "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj",
+        "projectUniqueName": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj",
         "projectName": "KH21SE",
-        "projectPath": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj",
+        "projectPath": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE\\KH21SE.csproj",
         "packagesPath": "C:\\Users\\djree\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE\\obj\\",
+        "outputPath": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",

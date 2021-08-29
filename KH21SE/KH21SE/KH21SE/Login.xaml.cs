@@ -179,12 +179,12 @@ namespace KH21SE
             }
             else
             {
-                var response = await s.AddAccount(new User() { email = email.Text, lastlogin = DateTime.Now, name = username.Text, phone = ";)", password = password.Text, logs = new int[] { } });
+                var response = await s.AddAccount(new User() { email = email.Text, lastlogin = DateTime.Now, name = username.Text, phone = ";)", password = password.Text, logs = new int[] { }, racesCompleted = new string[] { } });
                 if (!response.StartsWith("Failed"))
                 {
                     var userToUse = JsonConvert.DeserializeObject<User>(response);
                     Navigation.PushAsync(new MainPage());
-                    ServerCommunication.MyUserInstance = new User() { _id = userToUse._id, email = email.Text, lastlogin = DateTime.Now, name = username.Text, phone = ";)", password = password.Text, logs = new int[] { } };
+                    ServerCommunication.MyUserInstance = new User() { _id = userToUse._id, email = email.Text, lastlogin = DateTime.Now, name = username.Text, phone = ";)", password = password.Text, logs = new int[] { }, racesCompleted = new string[] { } };
                 }
                 else
                 {

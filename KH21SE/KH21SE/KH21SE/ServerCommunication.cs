@@ -18,6 +18,7 @@ namespace KH21SE
         public DateTime lastlogin;
         public string password;
         public int[] logs;
+        public string[] racesCompleted;
     }
     public class Team
     {

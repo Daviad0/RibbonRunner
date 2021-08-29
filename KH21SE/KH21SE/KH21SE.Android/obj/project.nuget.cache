@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DyZvlB7/t6sHquk+jB3CQumvrwOHL2LeutpS3xIut5ajsgoPhxhn13pSflfNR6qqR5+Lw0ytDWDYXaWL6MF8Vw==",
+  "dgSpecHash": "JsYE9406HHKj/bfU/WTCeBbOEWnOgIxVwiOkyl5bp7HGXT1MejM1UrxEwS+222iJ+1zmcojq/ZUmGbbAQGq1ew==",
   "success": true,
-  "projectFilePath": "C:\\Users\\djree\\source\\repos\\KH21SE\\KH21SE\\KH21SE.Android\\KH21SE.Android.csproj",
+  "projectFilePath": "D:\\source\\RibbonRunner\\KH21SE\\KH21SE\\KH21SE.Android\\KH21SE.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\djree\\.nuget\\packages\\google.api.commonprotos\\2.3.0\\google.api.commonprotos.2.3.0.nupkg.sha512",
     "C:\\Users\\djree\\.nuget\\packages\\google.protobuf\\3.15.8\\google.protobuf.3.15.8.nupkg.sha512",
